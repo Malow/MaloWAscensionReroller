@@ -13,7 +13,7 @@ An addon that lets you find the perfect starting-abilities on Ascension's Draft 
 /mar enable  
 
 Note that any spells you don't define will be counted as worthless and randomly picked if no better option exist.  
-If you run out of macro space you can split it up into multiple marcos, just make sure only 1 macro has the "/mar enable", and to press the one macro that does have after you've pressed the other macros.
+If you run out of macro space you can split it up into multiple marcos, just make sure only 1 macro has the "/mar enable", and to press the one macro that does have it after you've pressed the other macros.
 
 2. Drag the Draft Mode Deck item onto your bars at a convenient key-binding.  
 3. Press the keybind for Draft Mode Deck, press "Accept" and press that key-bind again (so that both the 3 spell-choices and the Accept/Cancel frame is visible).  
