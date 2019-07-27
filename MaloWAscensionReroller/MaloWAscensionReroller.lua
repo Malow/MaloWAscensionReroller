@@ -31,6 +31,18 @@ SlashCmdList[MY_ABBREVIATION .. "COMMAND"] = function(msg)
 	local arguments = MaloWUtils_SplitStringOnSpace(msg)
 	local command = arguments[1]
 	if command == "enable" then
+		if table.getn(arguments) > 1 and table.getn(arguments) ~= 5 then
+			mar_print("Bad number of arguments, it should be either 0 or 4.")
+			return
+		end
+		
+		if table.getn(arguments) == 5 then
+			mar_requiredScore = tonumber(arguments[2])
+			mar_strongScore = tonumber(arguments[3])
+			mar_decentScore = tonumber(arguments[4])
+			mar_weakScore = tonumber(arguments[5])
+		end
+	
 		mar_isEnabled = true
 		mar_print("Starting to look for:")
 		local s = ""
@@ -47,7 +59,14 @@ SlashCmdList[MY_ABBREVIATION .. "COMMAND"] = function(msg)
 		for _, v in pairs(mar_decentSpells) do
 			s = s .. v .. " "
 		end
-		mar_print("Strongs: " .. s)
+		mar_print("Decents: " .. s)
+		s = ""
+		for _, v in pairs(mar_weakSpells) do
+			s = s .. v .. " "
+		end
+		mar_print("Weaks: " .. s)
+		mar_print("Requiring a score of " .. tostring(mar_requiredScore) .. ". Scores given for Strong/Decent/Weak spells: " .. tostring(mar_strongScore) .. "/" .. tostring(mar_decentScore) .. "/" .. tostring(mar_weakScore))
+		mar_print("I wish you the best of luck! // MaloW")
 	elseif command == "disable" then
 		mar_isEnabled = false
 	elseif command == "printseen" then
@@ -58,6 +77,8 @@ SlashCmdList[MY_ABBREVIATION .. "COMMAND"] = function(msg)
 		table.insert(mar_strongSpells, tonumber(arguments[2]))
 	elseif command == "adddecent" then
 		table.insert(mar_decentSpells, tonumber(arguments[2]))
+	elseif command == "addweak" then
+		table.insert(mar_weakSpells, tonumber(arguments[2]))
 	else
 		mar_print("Unrecognized command: " .. command)
 	end
@@ -168,6 +189,7 @@ f:SetScript("OnEvent", mar_onEvent);
 mar_mustHaveSpells = {}
 mar_strongSpells = {}
 mar_decentSpells = {}
+mar_weakSpells = {}
 
 
 -- table.insert(mar_mustHaveSpells, 1454) -- Life Tap
@@ -185,9 +207,14 @@ mar_decentSpells = {}
 -- table.insert(mar_decentSpells, 635) -- Holy Light
 -- table.insert(mar_decentSpells, 1784) -- Stealth
 
+mar_delay = 0.5
+mar_requiredScore = 7
+mar_strongScore = 5
+mar_decentScore = 2
+mar_weakScore = 1
+
 
 mar_pickedSpells = {}
-mar_delay = 0.5
 mar_lastChoiceTime = 0
 mar_firstFailedCardTime = 0
 mar_isDone = false
@@ -227,18 +254,25 @@ function mar_onUpdate()
 		for _, strongSpell in pairs(mar_strongSpells) do 
 			for _, pickedSpell in pairs(mar_pickedSpells) do 
 				if pickedSpell == strongSpell then
-					score = score + 5
+					score = score + mar_strongScore
 				end
 			end
 		end
 		for _, decentSpell in pairs(mar_decentSpells) do 
 			for _, pickedSpell in pairs(mar_pickedSpells) do 
 				if pickedSpell == decentSpell then
-					score = score + 2
+					score = score + mar_decentScore
 				end
 			end
 		end
-		if score < 5 then
+		for _, weakSpell in pairs(mar_weakSpells) do 
+			for _, pickedSpell in pairs(mar_pickedSpells) do 
+				if pickedSpell == weakSpell then
+					score = score + mar_weakScore
+				end
+			end
+		end
+		if score < mar_requiredScore then
 			mar_print("Got a score of " .. tostring(score) .. ", rerolling")
 			mar_reroll()
 			return
@@ -293,9 +327,17 @@ function mar_onUpdate()
 				return
 			end
 		end
+		for _, weakSpell in pairs(mar_weakSpells) do 
+			if rolledSpell == weakSpell then
+				mar_print("Found weak, Picking " .. tostring(rolledSpell))
+				table.insert(mar_pickedSpells, rolledSpell)
+				_G["Card" .. tostring(cardId) .. "LearnSpellButton"]:Click()
+				return
+			end
+		end
 	end
 	
-	mar_print("Everything was shit, picking " .. tostring(availableSpells[1]))
+	mar_print("Everything was shit, picking left-most: " .. tostring(availableSpells[1]))
 	table.insert(mar_pickedSpells, availableSpells[1])
 	Card1LearnSpellButton:Click()
 end
