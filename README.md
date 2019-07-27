@@ -20,7 +20,7 @@ If you run out of macro space you can split it up into multiple marcos, just mak
 4. Press the macro you created earlier.  
 5. Spam-press the keybind for Draft Mode Deck.  
 
-It will now keep rerolling until you have ALL must-haves AND you have a score of 6 or better. Strong spells gives 5 score, decent spells give 2 score. You can customize the required score and the values for the different tiers of spells by providing additional arguments to "/mar enable", like:  
+It will now keep rerolling until you have ALL must-haves AND you have a score of 7 or better. Strong spells gives 5 score, decent spells give 2 score and weak spells give 1 score. You can customize the required score and the values for the different tiers of spells by providing additional arguments to "/mar enable", like:  
 /mar enable 15 7 4 2  
 This example will require 15 score total, strong spells will give 7 score, decent spells will give 4 score, and weak spells will give 2 score.  
 
