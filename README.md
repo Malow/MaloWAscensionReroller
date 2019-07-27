@@ -2,21 +2,27 @@
 An addon that lets you find the perfect starting-abilities on Ascension's Draft realms
 
 # Instructions for how to use
-1. Make a macro where you define the spell-ids of your must-have spells, your strong spells and your decent spells like:  
+1. Make a macro where you define the spell-ids of your must-have spells, your strong spells, your decent spells, and your weak spells like:  
 /mar addmusthave 71  
 /mar addmusthave 355  
 /mar addstrong 6343  
 /mar addstrong 2565  
 /mar addstrong 25780  
 /mar adddecent 78  
+/mar addweak 5277  
 /mar enable  
+
+Note that any spells you don't define will be counted as worthless and randomly picked if no better option exist.  
+If you run out of macro space you can split it up into multiple marcos, just make sure only 1 macro has the "/mar enable", and to press the one macro that does have after you've pressed the other macros.
 
 2. Drag the Draft Mode Deck item onto your bars at a convenient key-binding.  
 3. Press the keybind for Draft Mode Deck, press "Accept" and press they key-bind again.  
 4. Press the macro you created earlier.  
 5. Spam-press the keybind for Draft Mode Deck.  
 
-It will now keep rerolling until you have ALL must-haves AND you have a score of 6 or better. Strong spells gives 5 score, decent spells give 2 score.  
+It will now keep rerolling until you have ALL must-haves AND you have a score of 6 or better. Strong spells gives 5 score, decent spells give 2 score. You can customize the required score and the values for the different tiers of spells by providing additional arguments to "/mar enable", like:  
+/mar enable 15 7 4 2  
+This example will require 15 score total, strong spells will give 7 score, decent spells will give 4 score, and weak spells will give 2 score.
 
 # To find out spell-ids
 Non-complete list:  
