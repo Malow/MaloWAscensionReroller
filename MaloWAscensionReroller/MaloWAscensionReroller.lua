@@ -66,9 +66,14 @@ SlashCmdList[MY_ABBREVIATION .. "COMMAND"] = function(msg)
 		end
 		mar_print("Weaks: " .. s)
 		mar_print("Requiring a score of " .. tostring(mar_requiredScore) .. ". Scores given for Strong/Decent/Weak spells: " .. tostring(mar_strongScore) .. "/" .. tostring(mar_decentScore) .. "/" .. tostring(mar_weakScore))
-		mar_print("I wish you the best of luck! // MaloW")
+		mar_print("I wish you the best of luck! If you find any bugs feel free to open an issue on Github or contact me on Discord // MaloW")
+		mar_lastChoiceTime = GetTime() + 3
 	elseif command == "disable" then
 		mar_isEnabled = false
+		mar_print("MaloWAscensionReroller was disabled.")
+	elseif command == "setdelay" then
+		mar_delay = tonumber(arguments[2])
+		mar_print("Delay set to " .. tostring(mar_delay))
 	elseif command == "printseen" then
 		mar_printSeenSpells()
 	elseif command == "addmusthave" then
@@ -217,7 +222,6 @@ mar_weakScore = 1
 mar_pickedSpells = {}
 mar_lastChoiceTime = 0
 mar_firstFailedCardTime = 0
-mar_isDone = false
 mar_isEnabled = false
 
 mar_seenSpells = {}
@@ -231,10 +235,6 @@ function mar_onUpdate()
 		return
 	end
 	mar_lastChoiceTime = GetTime()
-	if mar_isDone then
-		mar_print("Finished")
-		return
-	end
 	
 	if table.getn(mar_pickedSpells) > 3 then
 		local score = 0
@@ -277,7 +277,8 @@ function mar_onUpdate()
 			mar_reroll()
 			return
 		else
-			mar_isDone = true
+			mar_print("Finished! All must-have spells were found, and a score of " .. tostring(score) .. " was reached.")
+			mar_isEnabled = false
 			return
 		end
 	end

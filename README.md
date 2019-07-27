@@ -16,13 +16,15 @@ Note that any spells you don't define will be counted as worthless and randomly 
 If you run out of macro space you can split it up into multiple marcos, just make sure only 1 macro has the "/mar enable", and to press the one macro that does have after you've pressed the other macros.
 
 2. Drag the Draft Mode Deck item onto your bars at a convenient key-binding.  
-3. Press the keybind for Draft Mode Deck, press "Accept" and press they key-bind again.  
+3. Press the keybind for Draft Mode Deck, press "Accept" and press that key-bind again (so that both the 3 spell-choices and the Accept/Cancel frame is visible).  
 4. Press the macro you created earlier.  
 5. Spam-press the keybind for Draft Mode Deck.  
 
 It will now keep rerolling until you have ALL must-haves AND you have a score of 6 or better. Strong spells gives 5 score, decent spells give 2 score. You can customize the required score and the values for the different tiers of spells by providing additional arguments to "/mar enable", like:  
 /mar enable 15 7 4 2  
-This example will require 15 score total, strong spells will give 7 score, decent spells will give 4 score, and weak spells will give 2 score.
+This example will require 15 score total, strong spells will give 7 score, decent spells will give 4 score, and weak spells will give 2 score.  
+
+If you notice that the server is not responding quickly enough you can change the delay by running "/mar setdelay 1". The default delay is 0.5.
 
 # To find out spell-ids
 Non-complete list:  
