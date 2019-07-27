@@ -1,0 +1,8 @@
+## Interface: 30300
+## Title: MaloWAscensionReroller
+## DefaultState: enabled
+## Notes: MaloWAscensionReroller
+## Version 1
+## Author: MaloW
+
+MaloWAscensionReroller.lua
