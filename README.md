@@ -23,6 +23,8 @@ If you run out of macro space you can split it up into multiple marcos, just mak
 It will now keep rerolling until you have ALL must-haves AND you have a score of 7 or better. Strong spells gives 5 score, decent spells give 2 score and weak spells give 1 score. You can customize the required score and the values for the different tiers of spells by providing additional arguments to "/mar enable", like:  
 /mar enable 15 7 4 2  
 This example will require 15 score total, strong spells will give 7 score, decent spells will give 4 score, and weak spells will give 2 score.  
+Must-have spells do not use the scoring system at all, if you don't provide any Strong/Decent/weak spells then the scoring system will be automatically disabled since it's impossible to get any score without spells in those tiers.  
+Note that if you for example want 3 specific spells 100%, and for your fourth spell you want 1 of 5 possible good spells, then if you add those 3 first spells as must-haves, and you add the other 5 spells as Strong spells, the scoring system will only be active on that last spell, and you need to modify the required-score and/or the score given from strong spells to ensure that getting a single strong spell gives enough score to meet the required score. If you don't do this the roll can never be successful.
 
 If you notice that the server is not responding quickly enough you can change the delay by running "/mar setdelay 1". The default delay is 0.5.
 

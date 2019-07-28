@@ -65,7 +65,12 @@ SlashCmdList[MY_ABBREVIATION .. "COMMAND"] = function(msg)
 			s = s .. v .. " "
 		end
 		mar_print("Weaks: " .. s)
-		mar_print("Requiring a score of " .. tostring(mar_requiredScore) .. ". Scores given for Strong/Decent/Weak spells: " .. tostring(mar_strongScore) .. "/" .. tostring(mar_decentScore) .. "/" .. tostring(mar_weakScore))
+		if table.getn(mar_strongSpells) == 0 and table.getn(mar_decentSpells) == 0 and table.getn(mar_weakSpells) == 0 then
+			mar_print("Scoring-system was automatically disabled due to no Strong/Decent/Weak spells added")
+			mar_requiredScore = 0
+		else
+			mar_print("Requiring a score of " .. tostring(mar_requiredScore) .. ". Scores given for Strong/Decent/Weak spells: " .. tostring(mar_strongScore) .. "/" .. tostring(mar_decentScore) .. "/" .. tostring(mar_weakScore))
+		end
 		mar_print("I wish you the best of luck! If you find any bugs feel free to open an issue on Github or contact me on Discord // MaloW")
 		mar_lastChoiceTime = GetTime() + 3
 	elseif command == "disable" then
@@ -223,6 +228,7 @@ mar_pickedSpells = {}
 mar_lastChoiceTime = 0
 mar_firstFailedCardTime = 0
 mar_isEnabled = false
+mar_cardShowTimeout = 2
 
 mar_seenSpells = {}
 
@@ -287,7 +293,7 @@ function mar_onUpdate()
 		if mar_firstFailedCardTime == 0 then
 			mar_firstFailedCardTime = GetTime()
 		else
-			if mar_firstFailedCardTime + 10 > GetTime() then
+			if mar_firstFailedCardTime + mar_cardShowTimeout < GetTime() then
 				mar_firstFailedCardTime = 0
 				mar_print("Timed out with cards not being visible, pickedSpell's size: " .. tostring(table.getn(mar_pickedSpells)))
 				mar_reroll()
