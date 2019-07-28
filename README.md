@@ -28,8 +28,16 @@ Note that if you for example want 3 specific spells 100%, and for your fourth sp
 
 If you notice that the server is not responding quickly enough you can change the delay by running "/mar setdelay 1". The default delay is 0.5.
 
+# Some math
+I've seen 78 different starting-spells. Assuming half of those are locked behind requiring other spells first that means that using a macro like:  
+/mar addmusthave 71  
+/mar addmusthave 355  
+/mar addmusthave 6343  
+/mar addmusthave 2565  
+Will result in roughly a 0.0012% chance of hitting the right spells on a roll (Using (4/39) * (3/38) * (2/37) * (1/36)). This means that 83333 rolls are needed on average to hit it, which using the addon (which can do a reroll every 2 seconds) would take rougly 46 hours of rolling. So you're probably better off being less picky and using fewer must-have's and allowing multiple different spells to hit for Strong/Decent/Weak spells.  
+
 # To find out spell-ids
-Non-complete list:  
+Non-complete list (mined from running the addon for ours and then running "/mar printseen"):  
 -- Corruption - 172  
 -- Charge - 100  
 -- Seal of Righteousness - 21084  
@@ -106,5 +114,7 @@ Non-complete list:
 -- Curse of Agony - 980  
 -- Eviscerate - 2098  
 -- Taunt - 355  
+-- Slice and Dice - 5171  
+-- Judgement of Light - 20271  
 
 If a spell is missing from this list that is available as a starter-spell then find the spell-id on https://wotlk.evowow.com/ by finding the spell and looking at the URL of your browser. Please report any missing spells to me and I'll add them to the list above.
