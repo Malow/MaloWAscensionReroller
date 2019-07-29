@@ -11,6 +11,14 @@ function MaloWUtils_SplitStringOnSpace(s)
 	return t
 end
 
+function MaloWUtils_TableLength(t)
+	local count = 0
+	for _ in pairs(t) do 
+		count = count + 1 
+	end
+	return count
+end
+
 -- Frame setup for update
 local total = 0
 local function mar_update(self, elapsed)
@@ -31,12 +39,12 @@ SlashCmdList[MY_ABBREVIATION .. "COMMAND"] = function(msg)
 	local arguments = MaloWUtils_SplitStringOnSpace(msg)
 	local command = arguments[1]
 	if command == "enable" then
-		if table.getn(arguments) > 1 and table.getn(arguments) ~= 5 then
+		if MaloWUtils_TableLength(arguments) > 1 and MaloWUtils_TableLength(arguments) ~= 5 then
 			mar_print("Bad number of arguments, it should be either 0 or 4.")
 			return
 		end
 		
-		if table.getn(arguments) == 5 then
+		if MaloWUtils_TableLength(arguments) == 5 then
 			mar_requiredScore = tonumber(arguments[2])
 			mar_strongScore = tonumber(arguments[3])
 			mar_decentScore = tonumber(arguments[4])
@@ -65,7 +73,7 @@ SlashCmdList[MY_ABBREVIATION .. "COMMAND"] = function(msg)
 			s = s .. v .. " "
 		end
 		mar_print("Weaks: " .. s)
-		if table.getn(mar_strongSpells) == 0 and table.getn(mar_decentSpells) == 0 and table.getn(mar_weakSpells) == 0 then
+		if MaloWUtils_TableLength(mar_strongSpells) == 0 and MaloWUtils_TableLength(mar_decentSpells) == 0 and MaloWUtils_TableLength(mar_weakSpells) == 0 then
 			mar_print("Scoring-system was automatically disabled due to no Strong/Decent/Weak spells added")
 			mar_requiredScore = 0
 		else
@@ -74,7 +82,7 @@ SlashCmdList[MY_ABBREVIATION .. "COMMAND"] = function(msg)
 		mar_print("I wish you the best of luck! If you find any bugs feel free to open an issue on Github or contact me on Discord // MaloW")
 		mar_lastChoiceTime = GetTime() + 3
 	elseif command == "disable" then
-		mar_isEnabled = false
+		mar_reset()
 		mar_print("MaloWAscensionReroller was disabled.")
 	elseif command == "setdelay" then
 		mar_delay = tonumber(arguments[2])
@@ -116,6 +124,20 @@ function mar_onEvent(self, event, arg1, arg2, arg3, ...)
 end
 f:RegisterEvent("ADDON_LOADED");
 f:SetScript("OnEvent", mar_onEvent);
+
+
+function mar_reset()
+	mar_isEnabled = false
+	mar_mustHaveSpells = {}
+	mar_strongSpells = {}
+	mar_decentSpells = {}
+	mar_weakSpells = {}
+	mar_requiredScore = 7
+	mar_strongScore = 5
+	mar_decentScore = 2
+	mar_weakScore = 1
+	mar_pickedSpells = {}
+end
 
 
 -- Corruption - 172
@@ -242,11 +264,11 @@ function mar_onUpdate()
 	end
 	mar_lastChoiceTime = GetTime()
 	
-	if table.getn(mar_pickedSpells) > 3 then
+	if MaloWUtils_TableLength(mar_pickedSpells) > 3 then
 		local score = 0
 		for _, mustHaveSpell in pairs(mar_mustHaveSpells) do 
 			local found = false
-			for _, pickedSpell in pairs(mar_pickedSpells) do 
+			for pickedSpell, _ in pairs(mar_pickedSpells) do 
 				if pickedSpell == mustHaveSpell then
 					found = true
 				end
@@ -258,21 +280,21 @@ function mar_onUpdate()
 			end
 		end
 		for _, strongSpell in pairs(mar_strongSpells) do 
-			for _, pickedSpell in pairs(mar_pickedSpells) do 
+			for pickedSpell, _ in pairs(mar_pickedSpells) do 
 				if pickedSpell == strongSpell then
 					score = score + mar_strongScore
 				end
 			end
 		end
 		for _, decentSpell in pairs(mar_decentSpells) do 
-			for _, pickedSpell in pairs(mar_pickedSpells) do 
+			for pickedSpell, _ in pairs(mar_pickedSpells) do 
 				if pickedSpell == decentSpell then
 					score = score + mar_decentScore
 				end
 			end
 		end
 		for _, weakSpell in pairs(mar_weakSpells) do 
-			for _, pickedSpell in pairs(mar_pickedSpells) do 
+			for pickedSpell, _ in pairs(mar_pickedSpells) do 
 				if pickedSpell == weakSpell then
 					score = score + mar_weakScore
 				end
@@ -284,6 +306,7 @@ function mar_onUpdate()
 			return
 		else
 			mar_print("Finished! All must-have spells were found, and a score of " .. tostring(score) .. " was reached.")
+			mar_reset()
 			mar_isEnabled = false
 			return
 		end
@@ -295,7 +318,7 @@ function mar_onUpdate()
 		else
 			if mar_firstFailedCardTime + mar_cardShowTimeout < GetTime() then
 				mar_firstFailedCardTime = 0
-				mar_print("Timed out with cards not being visible, pickedSpell's size: " .. tostring(table.getn(mar_pickedSpells)))
+				mar_print("Timed out with cards not being visible, pickedSpell's size: " .. tostring(MaloWUtils_TableLength(mar_pickedSpells)))
 				mar_reroll()
 				return
 			end
@@ -305,47 +328,71 @@ function mar_onUpdate()
 	mar_firstFailedCardTime = 0
 	
 	local availableSpells = mar_getCardSpells()
-	if table.getn(availableSpells) == 0 then
+	if MaloWUtils_TableLength(availableSpells) == 0 then
 		return
+	end
+	
+	for cardId, rolledSpell in pairs(availableSpells) do 
+		for pickedSpell, _ in pairs(mar_pickedSpells) do 
+			if pickedSpell == rolledSpell then
+				_G["Card" .. tostring(cardId) .. "LearnSpellButton"]:Click()
+				return
+			end
+		end
 	end
 	
 	for cardId, rolledSpell in pairs(availableSpells) do 
 		for _, mustHaveSpell in pairs(mar_mustHaveSpells) do 
 			if rolledSpell == mustHaveSpell then
+				if mar_pickedSpells[rolledSpell] ~= nil then
+					return
+				end
 				mar_print("Found must-have, Picking " .. tostring(rolledSpell))
-				table.insert(mar_pickedSpells, rolledSpell)
+				mar_pickedSpells[rolledSpell] = true
 				_G["Card" .. tostring(cardId) .. "LearnSpellButton"]:Click()
 				return
 			end
 		end
 		for _, strongSpell in pairs(mar_strongSpells) do 
 			if rolledSpell == strongSpell then
+				if mar_pickedSpells[rolledSpell] ~= nil then
+					return
+				end
 				mar_print("Found strong, Picking " .. tostring(rolledSpell))
-				table.insert(mar_pickedSpells, rolledSpell)
+				mar_pickedSpells[rolledSpell] = true
 				_G["Card" .. tostring(cardId) .. "LearnSpellButton"]:Click()
 				return
 			end
 		end
 		for _, decentSpell in pairs(mar_decentSpells) do 
 			if rolledSpell == decentSpell then
+				if mar_pickedSpells[rolledSpell] ~= nil then
+					return
+				end
 				mar_print("Found decent, Picking " .. tostring(rolledSpell))
-				table.insert(mar_pickedSpells, rolledSpell)
+				mar_pickedSpells[rolledSpell] = true
 				_G["Card" .. tostring(cardId) .. "LearnSpellButton"]:Click()
 				return
 			end
 		end
 		for _, weakSpell in pairs(mar_weakSpells) do 
 			if rolledSpell == weakSpell then
+				if mar_pickedSpells[rolledSpell] ~= nil then
+					return
+				end
 				mar_print("Found weak, Picking " .. tostring(rolledSpell))
-				table.insert(mar_pickedSpells, rolledSpell)
+				mar_pickedSpells[rolledSpell] = true
 				_G["Card" .. tostring(cardId) .. "LearnSpellButton"]:Click()
 				return
 			end
 		end
 	end
 	
+	if mar_pickedSpells[availableSpells[1]] ~= nil then
+		return
+	end
 	mar_print("Everything was shit, picking left-most: " .. tostring(availableSpells[1]))
-	table.insert(mar_pickedSpells, availableSpells[1])
+	mar_pickedSpells[availableSpells[1]] = true
 	Card1LearnSpellButton:Click()
 end
 
