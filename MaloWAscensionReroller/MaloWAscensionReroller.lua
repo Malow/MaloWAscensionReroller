@@ -83,6 +83,7 @@ SlashCmdList[MY_ABBREVIATION .. "COMMAND"] = function(msg)
 		mar_lastChoiceTime = GetTime() + 3
 	elseif command == "disable" then
 		mar_reset()
+		mar_isEnabled = false
 		mar_print("MaloWAscensionReroller was disabled.")
 	elseif command == "setdelay" then
 		mar_delay = tonumber(arguments[2])
@@ -127,7 +128,6 @@ f:SetScript("OnEvent", mar_onEvent);
 
 
 function mar_reset()
-	mar_isEnabled = false
 	mar_mustHaveSpells = {}
 	mar_strongSpells = {}
 	mar_decentSpells = {}
@@ -251,6 +251,7 @@ mar_lastChoiceTime = 0
 mar_firstFailedCardTime = 0
 mar_isEnabled = false
 mar_cardShowTimeout = 2
+mar_finished = false
 
 mar_seenSpells = {}
 
@@ -263,6 +264,23 @@ function mar_onUpdate()
 		return
 	end
 	mar_lastChoiceTime = GetTime()
+	
+	if mar_finished then -- After finishing do 1 iteration of trying to take the spells againt to prevent leaving the last roll un-picked.
+		mar_isEnabled = false
+		mar_finished = false
+		local availableSpells = mar_getCardSpells()
+		if MaloWUtils_TableLength(availableSpells) ~= 0 then
+			for cardId, rolledSpell in pairs(availableSpells) do 
+				for pickedSpell, _ in pairs(mar_pickedSpells) do 
+					if pickedSpell == rolledSpell then
+						_G["Card" .. tostring(cardId) .. "LearnSpellButton"]:Click()
+						return
+					end
+				end
+			end
+		end
+		return
+	end
 	
 	if MaloWUtils_TableLength(mar_pickedSpells) > 3 then
 		local score = 0
@@ -307,7 +325,7 @@ function mar_onUpdate()
 		else
 			mar_print("Finished! All must-have spells were found, and a score of " .. tostring(score) .. " was reached.")
 			mar_reset()
-			mar_isEnabled = false
+			mar_finished = true
 			return
 		end
 	end
@@ -348,7 +366,7 @@ function mar_onUpdate()
 					return
 				end
 				mar_print("Found must-have, Picking " .. tostring(rolledSpell))
-				mar_pickedSpells[rolledSpell] = true
+				mar_pickSpell(rolledSpell)
 				_G["Card" .. tostring(cardId) .. "LearnSpellButton"]:Click()
 				return
 			end
@@ -359,7 +377,7 @@ function mar_onUpdate()
 					return
 				end
 				mar_print("Found strong, Picking " .. tostring(rolledSpell))
-				mar_pickedSpells[rolledSpell] = true
+				mar_pickSpell(rolledSpell)
 				_G["Card" .. tostring(cardId) .. "LearnSpellButton"]:Click()
 				return
 			end
@@ -370,7 +388,7 @@ function mar_onUpdate()
 					return
 				end
 				mar_print("Found decent, Picking " .. tostring(rolledSpell))
-				mar_pickedSpells[rolledSpell] = true
+				mar_pickSpell(rolledSpell)
 				_G["Card" .. tostring(cardId) .. "LearnSpellButton"]:Click()
 				return
 			end
@@ -381,7 +399,7 @@ function mar_onUpdate()
 					return
 				end
 				mar_print("Found weak, Picking " .. tostring(rolledSpell))
-				mar_pickedSpells[rolledSpell] = true
+				mar_pickSpell(rolledSpell)
 				_G["Card" .. tostring(cardId) .. "LearnSpellButton"]:Click()
 				return
 			end
@@ -392,8 +410,16 @@ function mar_onUpdate()
 		return
 	end
 	mar_print("Everything was shit, picking left-most: " .. tostring(availableSpells[1]))
-	mar_pickedSpells[availableSpells[1]] = true
+	mar_pickSpell(availableSpells[1])
 	Card1LearnSpellButton:Click()
+end
+
+function mar_pickSpell(spellId)
+	mar_pickedSpells[spellId] = true
+	if spellId == 965200 then -- Add two fake-spells to make Tame Beast take up 3 slots
+		mar_pickedSpells[-1] = true
+		mar_pickedSpells[-2] = true
+	end
 end
 
 function mar_getCardSpells()

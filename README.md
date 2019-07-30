@@ -105,7 +105,7 @@ Non-complete list (mined from running the addon for ours and then running "/mar 
 -- Moonfire - 8921  
 -- Shadow Bolt - 686  
 -- Holy Light - 635  
--- Tame Beast - 965200  
+-- Tame Beast - 965200 (Note: This spell takes up 3 of the 4 starter spell-slots)  
 -- Aspect of the Monkey - 13163  
 -- Stealth - 1784  
 -- Fire Blast - 2136  
