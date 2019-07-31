@@ -140,104 +140,10 @@ function mar_reset()
 end
 
 
--- Corruption - 172
--- Charge - 100
--- Seal of Righteousness - 21084
--- Healing Wave - 331
--- Bloodrage - 2687
--- Searing Totem - 3599
--- Mark of the Wild - 1126
--- Overpower - 7384
--- Righteous Fury - 25780
--- Raptor Strike - 2973
--- Sinister Strike - 1752
--- Lightning Shield - 324
--- Power Word: Fortitude - 1243
--- Concussive Shot - 5116
--- Swipe (Bear) - 779
--- Fireball - 133
--- Arcane Intellect - 1459
--- Backstab - 53
--- Blessing of Wisdom - 19742
--- Defensive Stance - 71
--- Thunder Clap - 6343
--- Curse of Weakness - 702
--- Devotion Aura - 465
--- Life Tap - 1454
--- Wrath - 5176
--- Rejuvenation - 774
--- Thorns - 467
--- Summon Imp - 688
--- Aspect of the Hawk - 13165
--- Stoneskin Totem - 8071
--- Fade - 586
--- Demoralizing Roar - 99
--- Demon Skin - 687
--- Shield Bash - 72
--- Maul - 6807
--- Evasion - 5277
--- Divine Protection - 498
--- Smite - 585
--- Heroic Strike - 78
--- Victory Rush - 34428
--- Healing Touch - 5185
--- Earth Shock - 8042
--- Sprint - 2983
--- Shield Block - 2565
--- Stoneclaw Totem - 5730
--- Renew - 139
--- Auto Shot - 965202
--- Frostbolt - 116
--- Battle Shout - 6673
--- Arcane Shot - 3044
--- Growl - 6795
--- Shadow Word: Pain - 589
--- Immolate - 348
--- Serpent Sting - 1978
--- Hunter's Mark - 1130
--- Battle Stance - 2457
--- Rend - 772
--- Lightning Bolt - 403
--- Hamstring - 1715
--- Pick Pocket - 921
--- Frost Armor - 168
--- Blessing of Might - 19740
--- Gouge - 1776
--- Arcane Missiles - 5143
--- Moonfire - 8921
--- Shadow Bolt - 686
--- Holy Light - 635
--- Tame Beast - 965200
--- Aspect of the Monkey - 13163
--- Stealth - 1784
--- Fire Blast - 2136
--- Bear Form - 5487
--- Mongoose Bite - 1495
--- Curse of Agony - 980
--- Eviscerate - 2098
--- Taunt - 355
-
-
 mar_mustHaveSpells = {}
 mar_strongSpells = {}
 mar_decentSpells = {}
 mar_weakSpells = {}
-
-
--- table.insert(mar_mustHaveSpells, 1454) -- Life Tap
--- table.insert(mar_strongSpells, 331) -- Healing Wave
--- table.insert(mar_decentSpells, 139) -- Renew
--- table.insert(mar_decentSpells, 100) -- Charge
--- table.insert(mar_decentSpells, 774) -- Rejuvenation
--- table.insert(mar_decentSpells, 5277) -- Evasion
--- table.insert(mar_decentSpells, 498) -- Divine Protection
--- table.insert(mar_decentSpells, 585) -- Smite
--- table.insert(mar_decentSpells, 2983) -- Sprint
--- table.insert(mar_decentSpells, 116) -- Frostbolt
--- table.insert(mar_decentSpells, 168) -- Frost Armor
--- table.insert(mar_decentSpells, 5143) -- Arcane Missiles
--- table.insert(mar_decentSpells, 635) -- Holy Light
--- table.insert(mar_decentSpells, 1784) -- Stealth
 
 mar_delay = 0.5
 mar_requiredScore = 7
@@ -252,8 +158,14 @@ mar_firstFailedCardTime = 0
 mar_isEnabled = false
 mar_cardShowTimeout = 2
 mar_finished = false
+mar_pickRandomly = false
+mar_shouldReroll = false
 
 mar_seenSpells = {}
+mar_seenSpells[1] = {}
+mar_seenSpells[2] = {}
+mar_seenSpells[3] = {}
+mar_seenSpells[4] = {}
 
 -- OnUpdate
 function mar_onUpdate()
@@ -265,7 +177,12 @@ function mar_onUpdate()
 	end
 	mar_lastChoiceTime = GetTime()
 	
-	if mar_finished then -- After finishing do 1 iteration of trying to take the spells againt to prevent leaving the last roll un-picked.
+	if mar_shouldReroll then
+		mar_reroll()
+		return
+	end
+	
+	if mar_finished then -- After finishing do 1 iteration of trying to take the spells again to prevent leaving the last roll un-picked.
 		mar_isEnabled = false
 		mar_finished = false
 		local availableSpells = mar_getCardSpells()
@@ -359,6 +276,16 @@ function mar_onUpdate()
 		end
 	end
 	
+	mar_recordStatistics(availableSpells)
+	
+	if mar_pickRandomly then
+		local index = math.random(3)
+		mar_print("Random-pick mode is enabled, picking #" .. tostring(index))
+		mar_pickSpell(availableSpells[index])
+		_G["Card" .. tostring(index) .. "LearnSpellButton"]:Click()
+		return
+	end
+	
 	for cardId, rolledSpell in pairs(availableSpells) do 
 		for _, mustHaveSpell in pairs(mar_mustHaveSpells) do 
 			if rolledSpell == mustHaveSpell then
@@ -431,19 +358,34 @@ function mar_getCardSpells()
 	spells[2] = tonumber(Card2.SpellFrame.Icon.Spell)
 	spells[3] = tonumber(Card3.SpellFrame.Icon.Spell)
 	
-	local name = GetSpellInfo(Card1.SpellFrame.Icon.Spell)
-	mar_seenSpells[name] = Card1.SpellFrame.Icon.Spell
-	name = GetSpellInfo(Card2.SpellFrame.Icon.Spell)
-	mar_seenSpells[name] = Card2.SpellFrame.Icon.Spell
-	name = GetSpellInfo(Card3.SpellFrame.Icon.Spell)
-	mar_seenSpells[name] = Card3.SpellFrame.Icon.Spell
-	
 	return spells
 end
 
+function mar_recordStatistics(spells)
+	for k, spell in pairs(spells) do
+		local index = MaloWUtils_TableLength(mar_pickedSpells) + 1
+		local name = GetSpellInfo(spell)
+		-- mar_print("Recording statistics for #" .. tostring(index) .. ": " .. name .. " (" .. tostring(spell) .. ")")
+		if mar_seenSpells[index][spell] == nil then
+			mar_seenSpells[index][spell] = {}
+			mar_seenSpells[index][spell].count = 0
+			mar_seenSpells[index][spell].name = name
+		end
+		mar_seenSpells[index][spell].count = mar_seenSpells[index][spell].count + 1
+	end
+end
+
 function mar_reroll()
-	StaticPopup1Button1:Click();
-	mar_pickedSpells = {}
+	if StaticPopup1Button1:IsVisible() then
+		Card1:Hide()
+		Card2:Hide()
+		Card3:Hide()
+		StaticPopup1Button1:Click()
+		mar_pickedSpells = {}
+		mar_shouldReroll = false
+	else
+		mar_shouldReroll = true
+	end
 end
 
 function mar_printSeenSpells()
@@ -454,7 +396,38 @@ function mar_printSeenSpells()
 	ChatFrame1:AddMessage(s)
 end
 
-
-
+function mar_printStatisticsInCopyBox()
+	local fe = CreateFrame("EditBox", "MAR_PRINT", UIParent)
+	fe:SetFont(ChatFrame1:GetFont(),14,"OUTLINE")
+	fe:SetTextInsets(3,3,0,0)
+	fe:SetAllPoints(frame)
+	fe:SetBackdrop({bgFile = "Interface/Tooltips/UI-Tooltip-Background",
+		edgeFile = "Interface/Tooltips/UI-Tooltip-Border",tile = true, tileSize =12, edgeSize =12,insets = setmetatable({},{__index = function() return 3 end}) 
+	});
+	fe:SetBackdropColor(0,0,0,0.7)
+	fe:SetBackdropBorderColor(1,0.7,0,1)
+	fe:SetAutoFocus(false)
+	fe:SetScript("OnEscapePressed", function(s) s:ClearFocus(); s:Hide() end)
+	fe:SetScript("OnEnterPressed", function(s) s:ClearFocus(); s:Hide() end)
+	fe:SetScript("OnEditFocusGained", function(s) s:HighlightText(); end)
+	fe:SetScript("OnShow", function(s)
+		s.text = ""
+		for rollIndex, data in pairs (mar_seenSpells) do
+			local tempLine = "Number of times spell was available at roll #" .. tostring(rollIndex) .. "\n"
+			for spellId, spellData in pairs(data) do
+				tempLine = tempLine .. "    " .. spellData.name .. " (" .. tostring(spellId) .. "): " .. tostring(spellData.count) .. "\n"
+			end
+			s.text = s.text .. tempLine .. "\n"
+		end
+		s:SetMaxLetters(s.text:len())
+		s:SetText(s.text or "")
+		s:HighlightText()
+		s:SetFocus()
+	end)
+	fe:SetMultiLine(true)
+	fe:SetMaxLetters(100)
+	fe:Hide()
+	fe:Show()
+end
 
 

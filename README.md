@@ -37,7 +37,7 @@ I've seen 78 different starting-spells. Assuming half of those are locked behind
 Will result in roughly a 0.0012% chance of hitting the right spells on a roll (Using (4/39) * (3/38) * (2/37) * (1/36)). This means that 83333 rolls are needed on average to hit it, which using the addon (which can do a reroll every 2 seconds) would take rougly 46 hours of rolling. So you're probably better off being less picky and using fewer must-have's and allowing multiple different spells to hit for Strong/Decent/Weak spells.  
 
 # To find out spell-ids
-Non-complete list (mined from running the addon for ours and then running "/mar printseen"):  
+Non-complete list (mined from running the addon for hours and then running "/mar printseen"):  
 -- Corruption - 172  
 -- Charge - 100  
 -- Seal of Righteousness - 21084  
