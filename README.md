@@ -140,6 +140,7 @@ Non-complete list (mined from running the addon for hours and then running "/mar
 -- Taunt - 355  
 -- Slice and Dice - 5171  
 -- Judgement of Light - 20271  
+-- Judgement of Wisdom - 53408  
 
 If a spell is missing from this list that is available as a starter-spell then find the spell-id on https://wotlk.evowow.com/ by finding the spell and looking at the URL of your browser. Please report any missing spells to me and I'll add them to the list above.
 
