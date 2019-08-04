@@ -144,267 +144,270 @@ Non-complete list (mined from running the addon for hours and then running "/mar
 
 If a spell is missing from this list that is available as a starter-spell then find the spell-id on https://wotlk.evowow.com/ by finding the spell and looking at the URL of your browser. Please report any missing spells to me and I'll add them to the list above.
 
-# Statistics from randomly picking spells
+# Statistics from randomly picking spells (updated 2019-08-04)
 ```
 Number of times spell was available at roll #1
-    Healing Wave (331): 99
-    Immolate (348): 105
-    Defensive Stance (71): 167
-    Lightning Bolt (403): 106
-    Searing Totem (3599): 86
-    Stoneskin Totem (8071): 82
-    Sinister Strike (1752): 88
-    Frostbolt (116): 102
-    Shadow Bolt (686): 83
-    Gouge (1776): 80
-    Wrath (5176): 90
-    Backstab (53): 90
-    Summon Imp (688): 94
-    Seal of Righteousness (21084): 89
-    Fireball (133): 92
-    Moonfire (8921): 78
-    Corruption (172): 85
-    Stealth (1784): 149
-    Arcane Missiles (5143): 101
-    Bear Form (5487): 151
-    Battle Stance (2457): 159
-    Tame Beast (965200): 149
+    Healing Wave (331): 236
+    Immolate (348): 248
+    Defensive Stance (71): 319
+    Wrath (5176): 203
+    Searing Totem (3599): 265
+    Stoneskin Totem (8071): 238
+    Lightning Bolt (403): 254
+    Sinister Strike (1752): 222
+    Frostbolt (116): 240
+    Shadow Bolt (686): 237
+    Bear Form (5487): 305
+    Tame Beast (965200): 348
+    Backstab (53): 241
+    Summon Imp (688): 231
+    Seal of Righteousness (21084): 224
+    Fireball (133): 213
+    Auto Shot (965202): 340
+    Arcane Missiles (5143): 243
+    Stealth (1784): 331
+    Gouge (1776): 224
+    Moonfire (8921): 240
+    Battle Stance (2457): 364
+    Corruption (172): 255
 
 Number of times spell was available at roll #2
-    Gouge (1776): 42
-    Arcane Intellect (1459): 26
-    Mark of the Wild (1126): 31
-    Fireball (133): 34
-    Growl (6795): 2
-    Renew (139): 26
-    Shadow Bolt (686): 32
-    Curse of Weakness (702): 31
-    Curse of Agony (980): 38
-    Hamstring (1715): 35
-    Battle Shout (6673): 33
-    Evasion (5277): 28
-    Rejuvenation (774): 31
-    Bloodrage (2687): 25
-    Demon Skin (687): 31
-    Aspect of the Hawk (13165): 32
-    Maul (6807): 7
-    Blessing of Might (19740): 35
-    Hunter's Mark (1130): 37
-    Stoneclaw Totem (5730): 39
-    Summon Imp (688): 31
-    Overpower (7384): 31
-    Shield Block (2565): 4
-    Backstab (53): 32
-    Power Word: Fortitude (1243): 28
-    Devotion Aura (465): 32
-    Sinister Strike (1752): 31
-    Bear Form (5487): 18
-    Stealth (1784): 33
-    Fade (586): 35
-    Slice and Dice (5171): 7
-    Sprint (2983): 39
-    Seal of Righteousness (21084): 32
-    Wrath (5176): 30
-    Victory Rush (34428): 40
-    Defensive Stance (71): 23
-    Shield Bash (72): 41
-    Auto Shot (965202): 38
-    Concussive Shot (5116): 28
-    Heroic Strike (78): 29
-    Eviscerate (2098): 4
-    Holy Light (635): 28
-    Healing Wave (331): 31
-    Frost Armor (168): 40
-    Serpent Sting (1978): 36
-    Corruption (172): 29
-    Healing Touch (5185): 35
-    Judgement of Wisdom (53408): 1
-    Smite (585): 32
-    Divine Protection (498): 36
-    Pick Pocket (921): 3
-    Swipe (Bear) (779): 2
-    Righteous Fury (25780): 35
-    Thunder Clap (6343): 6
-    Moonfire (8921): 32
-    Demoralizing Roar (99): 2
-    Charge (100): 36
-    Lightning Bolt (403): 37
-    Life Tap (1454): 23
-    Rend (772): 28
-    Fire Blast (2136): 31
-    Shadow Word: Pain (589): 23
-    Judgement of Light (20271): 3
-    Stoneskin Totem (8071): 40
-    Arcane Missiles (5143): 34
-    Raptor Strike (2973): 35
-    Arcane Shot (3044): 44
-    Blessing of Wisdom (19742): 27
-    Earth Shock (8042): 36
-    Lightning Shield (324): 28
-    Searing Totem (3599): 21
-    Mongoose Bite (1495): 32
-    Frostbolt (116): 30
-    Thorns (467): 28
-    Battle Stance (2457): 21
-    Immolate (348): 38
-    Aspect of the Monkey (13163): 33
+    Gouge (1776): 99
+    Arcane Intellect (1459): 100
+    Mark of the Wild (1126): 80
+    Fireball (133): 92
+    Growl (6795): 3
+    Renew (139): 95
+    Shadow Bolt (686): 78
+    Curse of Weakness (702): 81
+    Curse of Agony (980): 86
+    Hamstring (1715): 90
+    Battle Shout (6673): 95
+    Stoneskin Totem (8071): 88
+    Rejuvenation (774): 110
+    Bloodrage (2687): 89
+    Demon Skin (687): 77
+    Aspect of the Hawk (13165): 91
+    Maul (6807): 6
+    Mongoose Bite (1495): 70
+    Hunter's Mark (1130): 71
+    Stoneclaw Totem (5730): 81
+    Summon Imp (688): 90
+    Overpower (7384): 74
+    Smite (585): 87
+    Backstab (53): 95
+    Power Word: Fortitude (1243): 79
+    Devotion Aura (465): 71
+    Sinister Strike (1752): 78
+    Bear Form (5487): 85
+    Stealth (1784): 90
+    Fade (586): 92
+    Slice and Dice (5171): 6
+    Sprint (2983): 68
+    Seal of Righteousness (21084): 73
+    Wrath (5176): 78
+    Victory Rush (34428): 97
+    Defensive Stance (71): 81
+    Shield Bash (72): 86
+    Auto Shot (965202): 78
+    Concussive Shot (5116): 75
+    Heroic Strike (78): 104
+    Eviscerate (2098): 10
+    Holy Light (635): 91
+    Healing Wave (331): 82
+    Frost Armor (168): 83
+    Serpent Sting (1978): 90
+    Earth Shock (8042): 84
+    Healing Touch (5185): 86
+    Taunt (355): 7
+    Swipe (Bear) (779): 5
+    Judgement of Wisdom (53408): 3
+    Divine Protection (498): 86
+    Judgement of Light (20271): 5
+    Shield Block (2565): 7
+    Thunder Clap (6343): 14
+    Pick Pocket (921): 7
+    Moonfire (8921): 92
+    Demoralizing Roar (99): 7
+    Charge (100): 79
+    Lightning Bolt (403): 83
+    Evasion (5277): 88
+    Righteous Fury (25780): 75
+    Fire Blast (2136): 78
+    Corruption (172): 72
+    Shadow Word: Pain (589): 82
+    Life Tap (1454): 99
+    Arcane Missiles (5143): 67
+    Blessing of Might (19740): 95
+    Rend (772): 79
+    Aspect of the Monkey (13163): 76
+    Arcane Shot (3044): 92
+    Lightning Shield (324): 82
+    Searing Totem (3599): 80
+    Raptor Strike (2973): 89
+    Frostbolt (116): 74
+    Thorns (467): 88
+    Battle Stance (2457): 83
+    Immolate (348): 88
+    Blessing of Wisdom (19742): 75
 
 Number of times spell was available at roll #3
-    Gouge (1776): 27
-    Arcane Intellect (1459): 39
-    Mark of the Wild (1126): 32
-    Fireball (133): 23
-    Growl (6795): 3
-    Renew (139): 40
-    Shadow Bolt (686): 29
-    Curse of Weakness (702): 28
-    Curse of Agony (980): 27
-    Hamstring (1715): 40
-    Battle Shout (6673): 27
-    Stoneskin Totem (8071): 32
-    Rejuvenation (774): 32
-    Bloodrage (2687): 42
-    Demon Skin (687): 33
-    Aspect of the Hawk (13165): 33
+    Gouge (1776): 77
+    Arcane Intellect (1459): 90
+    Mark of the Wild (1126): 80
+    Arcane Missiles (5143): 70
+    Growl (6795): 5
+    Renew (139): 81
+    Shadow Bolt (686): 89
+    Curse of Weakness (702): 90
+    Curse of Agony (980): 88
+    Hamstring (1715): 84
+    Battle Shout (6673): 80
+    Evasion (5277): 87
+    Rejuvenation (774): 90
+    Bloodrage (2687): 83
+    Demon Skin (687): 85
+    Aspect of the Hawk (13165): 74
     Maul (6807): 3
-    Blessing of Might (19740): 37
-    Hunter's Mark (1130): 34
-    Stoneclaw Totem (5730): 32
-    Summon Imp (688): 28
-    Overpower (7384): 48
-    Shield Block (2565): 3
-    Backstab (53): 28
-    Power Word: Fortitude (1243): 31
-    Devotion Aura (465): 24
-    Sinister Strike (1752): 46
-    Bear Form (5487): 29
-    Stealth (1784): 22
-    Fade (586): 32
-    Slice and Dice (5171): 9
-    Sprint (2983): 31
-    Seal of Righteousness (21084): 34
-    Wrath (5176): 27
-    Victory Rush (34428): 32
-    Defensive Stance (71): 28
-    Shield Bash (72): 20
-    Auto Shot (965202): 33
-    Concussive Shot (5116): 34
-    Heroic Strike (78): 35
-    Eviscerate (2098): 7
-    Holy Light (635): 23
-    Healing Wave (331): 37
-    Frost Armor (168): 26
-    Serpent Sting (1978): 42
-    Earth Shock (8042): 35
-    Healing Touch (5185): 20
-    Taunt (355): 5
-    Judgement of Wisdom (53408): 1
-    Pick Pocket (921): 3
-    Divine Protection (498): 28
-    Thunder Clap (6343): 5
-    Judgement of Light (20271): 2
-    Aspect of the Monkey (13163): 28
-    Mongoose Bite (1495): 29
-    Moonfire (8921): 29
-    Demoralizing Roar (99): 1
-    Charge (100): 27
-    Lightning Bolt (403): 25
-    Righteous Fury (25780): 30
-    Life Tap (1454): 35
-    Fire Blast (2136): 38
-    Blessing of Wisdom (19742): 36
-    Shadow Word: Pain (589): 25
-    Evasion (5277): 25
-    Corruption (172): 27
-    Smite (585): 36
-    Raptor Strike (2973): 27
-    Arcane Missiles (5143): 35
-    Rend (772): 47
-    Lightning Shield (324): 30
-    Searing Totem (3599): 38
-    Arcane Shot (3044): 38
-    Frostbolt (116): 43
-    Thorns (467): 38
-    Battle Stance (2457): 28
-    Immolate (348): 37
-    Swipe (Bear) (779): 4
+    Blessing of Might (19740): 72
+    Hunter's Mark (1130): 85
+    Stoneclaw Totem (5730): 85
+    Summon Imp (688): 91
+    Overpower (7384): 82
+    Smite (585): 84
+    Backstab (53): 96
+    Power Word: Fortitude (1243): 93
+    Devotion Aura (465): 76
+    Sinister Strike (1752): 87
+    Bear Form (5487): 68
+    Stealth (1784): 94
+    Fade (586): 73
+    Slice and Dice (5171): 12
+    Sprint (2983): 92
+    Seal of Righteousness (21084): 90
+    Wrath (5176): 82
+    Victory Rush (34428): 94
+    Defensive Stance (71): 58
+    Shield Bash (72): 92
+    Auto Shot (965202): 64
+    Concussive Shot (5116): 93
+    Heroic Strike (78): 89
+    Eviscerate (2098): 16
+    Holy Light (635): 87
+    Healing Wave (331): 76
+    Frost Armor (168): 88
+    Serpent Sting (1978): 87
+    Corruption (172): 78
+    Healing Touch (5185): 92
+    Taunt (355): 7
+    Judgement of Wisdom (53408): 5
+    Shield Block (2565): 6
+    Divine Protection (498): 96
+    Judgement of Light (20271): 5
+    Thunder Clap (6343): 14
+    Pick Pocket (921): 6
+    Swipe (Bear) (779): 6
+    Moonfire (8921): 83
+    Demoralizing Roar (99): 6
+    Charge (100): 77
+    Lightning Bolt (403): 105
+    Fireball (133): 78
+    Righteous Fury (25780): 89
+    Fire Blast (2136): 97
+    Life Tap (1454): 86
+    Shadow Word: Pain (589): 87
+    Rend (772): 67
+    Stoneskin Totem (8071): 81
+    Blessing of Wisdom (19742): 85
+    Raptor Strike (2973): 103
+    Arcane Shot (3044): 80
+    Earth Shock (8042): 85
+    Lightning Shield (324): 85
+    Searing Totem (3599): 79
+    Aspect of the Monkey (13163): 87
+    Frostbolt (116): 74
+    Thorns (467): 85
+    Battle Stance (2457): 86
+    Immolate (348): 79
+    Mongoose Bite (1495): 85
 
 Number of times spell was available at roll #4
-    Gouge (1776): 36
-    Arcane Intellect (1459): 32
-    Mark of the Wild (1126): 35
-    Arcane Missiles (5143): 35
-    Growl (6795): 4
-    Renew (139): 32
-    Shadow Bolt (686): 26
-    Curse of Weakness (702): 34
-    Curse of Agony (980): 45
-    Hamstring (1715): 34
-    Battle Shout (6673): 40
-    Evasion (5277): 46
-    Rejuvenation (774): 39
-    Aspect of the Monkey (13163): 36
-    Demon Skin (687): 33
-    Aspect of the Hawk (13165): 46
-    Maul (6807): 1
-    Mongoose Bite (1495): 52
-    Hunter's Mark (1130): 29
-    Stoneclaw Totem (5730): 33
-    Summon Imp (688): 31
-    Overpower (7384): 38
-    Smite (585): 25
-    Backstab (53): 30
-    Power Word: Fortitude (1243): 39
-    Devotion Aura (465): 38
-    Sinister Strike (1752): 37
-    Bear Form (5487): 38
-    Stealth (1784): 35
-    Fade (586): 30
-    Slice and Dice (5171): 6
-    Sprint (2983): 33
-    Seal of Righteousness (21084): 32
-    Wrath (5176): 33
-    Victory Rush (34428): 34
-    Defensive Stance (71): 23
-    Shield Bash (72): 37
-    Auto Shot (965202): 26
-    Concussive Shot (5116): 39
-    Heroic Strike (78): 33
-    Eviscerate (2098): 10
-    Holy Light (635): 33
-    Healing Wave (331): 31
-    Pick Pocket (921): 6
-    Serpent Sting (1978): 35
-    Earth Shock (8042): 35
-    Healing Touch (5185): 28
-    Taunt (355): 2
-    Righteous Fury (25780): 34
-    Divine Protection (498): 31
+    Gouge (1776): 89
+    Arcane Intellect (1459): 81
+    Mark of the Wild (1126): 100
+    Fireball (133): 91
+    Growl (6795): 7
+    Renew (139): 80
+    Shadow Bolt (686): 85
+    Curse of Weakness (702): 77
+    Curse of Agony (980): 95
+    Hamstring (1715): 78
+    Battle Shout (6673): 82
+    Stoneskin Totem (8071): 78
+    Rejuvenation (774): 83
+    Bloodrage (2687): 95
+    Demon Skin (687): 86
+    Aspect of the Hawk (13165): 90
+    Maul (6807): 6
+    Blessing of Might (19740): 84
+    Hunter's Mark (1130): 92
+    Stoneclaw Totem (5730): 89
+    Summon Imp (688): 92
+    Overpower (7384): 109
+    Smite (585): 88
+    Backstab (53): 90
+    Power Word: Fortitude (1243): 86
+    Devotion Aura (465): 86
+    Sinister Strike (1752): 79
+    Bear Form (5487): 89
+    Stealth (1784): 88
+    Fade (586): 110
+    Slice and Dice (5171): 16
+    Sprint (2983): 88
+    Seal of Righteousness (21084): 97
+    Wrath (5176): 75
+    Victory Rush (34428): 84
+    Defensive Stance (71): 70
+    Shield Bash (72): 98
+    Auto Shot (965202): 89
+    Concussive Shot (5116): 107
+    Heroic Strike (78): 91
+    Eviscerate (2098): 24
+    Holy Light (635): 81
+    Healing Wave (331): 86
+    Frost Armor (168): 93
+    Serpent Sting (1978): 94
+    Corruption (172): 86
+    Healing Touch (5185): 84
+    Taunt (355): 9
+    Shield Block (2565): 5
     Judgement of Wisdom (53408): 3
-    Shield Block (2565): 2
-    Moonfire (8921): 41
-    Blessing of Wisdom (19742): 33
-    Swipe (Bear) (779): 4
-    Demoralizing Roar (99): 2
-    Charge (100): 30
-    Lightning Bolt (403): 34
-    Corruption (172): 41
-    Blessing of Might (19740): 27
-    Fire Blast (2136): 42
-    Life Tap (1454): 32
-    Shadow Word: Pain (589): 28
-    Thorns (467): 32
-    Stoneskin Totem (8071): 28
-    Rend (772): 35
-    Fireball (133): 18
-    Bloodrage (2687): 34
-    Raptor Strike (2973): 42
-    Lightning Shield (324): 34
-    Searing Totem (3599): 40
-    Arcane Shot (3044): 43
-    Frostbolt (116): 39
-    Thunder Clap (6343): 7
-    Battle Stance (2457): 35
-    Immolate (348): 27
-    Frost Armor (168): 39
+    Divine Protection (498): 82
+    Swipe (Bear) (779): 3
+    Pick Pocket (921): 8
+    Judgement of Light (20271): 5
+    Thunder Clap (6343): 11
+    Moonfire (8921): 78
+    Demoralizing Roar (99): 4
+    Charge (100): 92
+    Lightning Bolt (403): 75
+    Evasion (5277): 95
+    Righteous Fury (25780): 77
+    Fire Blast (2136): 99
+    Arcane Missiles (5143): 96
+    Shadow Word: Pain (589): 103
+    Blessing of Wisdom (19742): 87
+    Rend (772): 89
+    Life Tap (1454): 82
+    Raptor Strike (2973): 108
+    Arcane Shot (3044): 102
+    Aspect of the Monkey (13163): 94
+    Lightning Shield (324): 88
+    Searing Totem (3599): 87
+    Earth Shock (8042): 93
+    Frostbolt (116): 79
+    Thorns (467): 107
+    Battle Stance (2457): 76
+    Immolate (348): 83
+    Mongoose Bite (1495): 96
 ```
