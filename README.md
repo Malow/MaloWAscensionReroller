@@ -28,7 +28,7 @@ Note that if you for example want 3 specific spells 100%, and for your fourth sp
 
 If you notice that the server is not responding quickly enough you can change the delay by running "/mar setdelay 1". The default delay is 0.5.
 
-# Some math
+# Some math - PROBABLY OUT-DATED FOR SEASON 5, scroll down for some Season 5 stats
 I've seen 78 different starting-spells. Assuming half of those are locked behind requiring other spells first that means that using a macro like:  
 /mar addmusthave 71  
 /mar addmusthave 355  
@@ -144,7 +144,268 @@ Non-complete list (mined from running the addon for hours and then running "/mar
 
 If a spell is missing from this list that is available as a starter-spell then find the spell-id on https://wotlk.evowow.com/ by finding the spell and looking at the URL of your browser. Please report any missing spells to me and I'll add them to the list above.
 
-# Statistics from randomly picking spells (updated 2019-08-04)
+# Season 5 Statistics from randomly picking spells (updated 2019-11-18)
+```
+Number of times spell was available at roll #1
+    Healing Wave (331): 58
+    Immolate (348): 60
+    Defensive Stance (71): 102
+    Lightning Bolt (403): 68
+    Searing Totem (3599): 63
+    Stoneskin Totem (8071): 65
+    Sinister Strike (1752): 58
+    Moonfire (8921): 64
+    Frostbolt (116): 60
+    Shadow Bolt (686): 58
+    Tame Beast (965200): 93
+    Seal of Righteousness (21084): 70
+    Gouge (1776): 63
+    Summon Imp (688): 70
+    Auto Shot (965202): 83
+    Fireball (133): 54
+    Bear Form (5487): 91
+    Arcane Missiles (5143): 73
+    Stealth (1784): 79
+    Corruption (172): 62
+    Wrath (5176): 58
+    Battle Stance (2457): 91
+    Backstab (53): 74
+
+Number of times spell was available at roll #2
+    Gouge (1776): 22
+    Arcane Intellect (1459): 27
+    Mark of the Wild (1126): 25
+    Fireball (133): 24
+    Growl (6795): 5
+    Renew (139): 17
+    Shadow Bolt (686): 27
+    Curse of Weakness (702): 28
+    Curse of Agony (980): 27
+    Hamstring (1715): 18
+    Battle Shout (6673): 22
+    Evasion (5277): 24
+    Rejuvenation (774): 22
+    Aspect of the Monkey (13163): 27
+    Raptor Strike (2973): 26
+    Aspect of the Hawk (13165): 25
+    Maul (6807): 1
+    Mongoose Bite (1495): 25
+    Hunter's Mark (1130): 21
+    Stoneclaw Totem (5730): 24
+    Summon Imp (688): 14
+    Overpower (7384): 30
+    Smite (585): 22
+    Backstab (53): 11
+    Power Word: Fortitude (1243): 23
+    Devotion Aura (465): 20
+    Sinister Strike (1752): 11
+    Bear Form (5487): 28
+    Stealth (1784): 16
+    Fade (586): 16
+    Slice and Dice (5171): 10
+    Sprint (2983): 22
+    Seal of Righteousness (21084): 22
+    Wrath (5176): 17
+    Victory Rush (34428): 26
+    Defensive Stance (71): 16
+    Shield Bash (72): 26
+    Auto Shot (965202): 22
+    Concussive Shot (5116): 22
+    Heroic Strike (78): 19
+    Holy Light (635): 20
+    Healing Wave (331): 18
+    Frost Armor (168): 22
+    Serpent Sting (1978): 20
+    Corruption (172): 28
+    Healing Touch (5185): 22
+    Taunt (355): 2
+    Divine Protection (498): 22
+    Thunder Clap (6343): 4
+    Judgement of Light (20271): 1
+    Pick Pocket (921): 2
+    Swipe (Bear) (779): 5
+    Moonfire (8921): 22
+    Demoralizing Roar (99): 1
+    Charge (100): 35
+    Lightning Bolt (403): 23
+    Blessing of Might (19740): 25
+    Bloodrage (2687): 30
+    Fire Blast (2136): 22
+    Righteous Fury (25780): 24
+    Shadow Word: Pain (589): 30
+    Life Tap (1454): 23
+    Rend (772): 31
+    Blessing of Wisdom (19742): 26
+    Demon Skin (687): 21
+    Arcane Shot (3044): 30
+    Earth Shock (8042): 22
+    Lightning Shield (324): 21
+    Searing Totem (3599): 22
+    Stoneskin Totem (8071): 20
+    Frostbolt (116): 13
+    Thorns (467): 16
+    Battle Stance (2457): 18
+    Immolate (348): 20
+    Arcane Missiles (5143): 21
+
+Number of times spell was available at roll #3
+    Gouge (1776): 27
+    Arcane Intellect (1459): 24
+    Mark of the Wild (1126): 17
+    Fireball (133): 25
+    Growl (6795): 7
+    Renew (139): 24
+    Shadow Bolt (686): 15
+    Curse of Weakness (702): 23
+    Curse of Agony (980): 21
+    Hamstring (1715): 15
+    Battle Shout (6673): 22
+    Evasion (5277): 24
+    Rejuvenation (774): 27
+    Aspect of the Monkey (13163): 27
+    Demon Skin (687): 17
+    Aspect of the Hawk (13165): 25
+    Maul (6807): 6
+    Blessing of Might (19740): 22
+    Hunter's Mark (1130): 25
+    Stoneclaw Totem (5730): 18
+    Summon Imp (688): 24
+    Overpower (7384): 23
+    Smite (585): 31
+    Backstab (53): 20
+    Power Word: Fortitude (1243): 24
+    Arcane Shot (3044): 30
+    Sinister Strike (1752): 19
+    Bear Form (5487): 20
+    Stealth (1784): 27
+    Fade (586): 25
+    Slice and Dice (5171): 4
+    Sprint (2983): 22
+    Seal of Righteousness (21084): 20
+    Wrath (5176): 32
+    Victory Rush (34428): 20
+    Defensive Stance (71): 18
+    Shield Bash (72): 17
+    Auto Shot (965202): 20
+    Concussive Shot (5116): 20
+    Heroic Strike (78): 18
+    Holy Light (635): 24
+    Healing Wave (331): 21
+    Frost Armor (168): 22
+    Serpent Sting (1978): 34
+    Corruption (172): 19
+    Healing Touch (5185): 24
+    Taunt (355): 3
+    Judgement of Light (20271): 1
+    Divine Protection (498): 22
+    Shield Block (2565): 1
+    Earth Shock (8042): 23
+    Mongoose Bite (1495): 17
+    Stoneskin Totem (8071): 21
+    Moonfire (8921): 18
+    Demoralizing Roar (99): 5
+    Charge (100): 21
+    Lightning Bolt (403): 20
+    Swipe (Bear) (779): 7
+    Pick Pocket (921): 11
+    Fire Blast (2136): 14
+    Devotion Aura (465): 16
+    Shadow Word: Pain (589): 17
+    Righteous Fury (25780): 16
+    Life Tap (1454): 32
+    Bloodrage (2687): 23
+    Rend (772): 34
+    Blessing of Wisdom (19742): 33
+    Raptor Strike (2973): 24
+    Lightning Shield (324): 26
+    Searing Totem (3599): 15
+    Arcane Missiles (5143): 27
+    Frostbolt (116): 18
+    Thorns (467): 20
+    Battle Stance (2457): 19
+    Immolate (348): 16
+    Thunder Clap (6343): 3
+
+Number of times spell was available at roll #4
+    Gouge (1776): 33
+    Arcane Intellect (1459): 25
+    Mark of the Wild (1126): 28
+    Arcane Missiles (5143): 21
+    Growl (6795): 8
+    Renew (139): 20
+    Shadow Bolt (686): 29
+    Curse of Weakness (702): 20
+    Curse of Agony (980): 25
+    Hamstring (1715): 19
+    Battle Shout (6673): 13
+    Evasion (5277): 21
+    Rejuvenation (774): 26
+    Bloodrage (2687): 25
+    Demon Skin (687): 22
+    Aspect of the Hawk (13165): 28
+    Maul (6807): 10
+    Mongoose Bite (1495): 32
+    Hunter's Mark (1130): 36
+    Stoneclaw Totem (5730): 19
+    Summon Imp (688): 21
+    Overpower (7384): 19
+    Smite (585): 24
+    Backstab (53): 26
+    Power Word: Fortitude (1243): 19
+    Devotion Aura (465): 23
+    Sinister Strike (1752): 18
+    Bear Form (5487): 29
+    Stealth (1784): 30
+    Fade (586): 31
+    Slice and Dice (5171): 12
+    Sprint (2983): 22
+    Seal of Righteousness (21084): 23
+    Wrath (5176): 24
+    Victory Rush (34428): 27
+    Defensive Stance (71): 33
+    Shield Bash (72): 25
+    Auto Shot (965202): 24
+    Concussive Shot (5116): 28
+    Heroic Strike (78): 16
+    Holy Light (635): 25
+    Healing Wave (331): 24
+    Frost Armor (168): 20
+    Serpent Sting (1978): 22
+    Earth Shock (8042): 31
+    Healing Touch (5185): 16
+    Taunt (355): 1
+    Judgement of Wisdom (53408): 3
+    Divine Protection (498): 25
+    Righteous Fury (25780): 25
+    Pick Pocket (921): 1
+    Life Tap (1454): 15
+    Fireball (133): 18
+    Swipe (Bear) (779): 7
+    Demoralizing Roar (99): 3
+    Charge (100): 23
+    Lightning Bolt (403): 17
+    Rend (772): 25
+    Shadow Word: Pain (589): 26
+    Fire Blast (2136): 23
+    Stoneskin Totem (8071): 26
+    Judgement of Light (20271): 1
+    Moonfire (8921): 28
+    Raptor Strike (2973): 26
+    Arcane Shot (3044): 30
+    Blessing of Might (19740): 29
+    Thunder Clap (6343): 3
+    Corruption (172): 25
+    Lightning Shield (324): 26
+    Searing Totem (3599): 16
+    Blessing of Wisdom (19742): 19
+    Frostbolt (116): 22
+    Thorns (467): 20
+    Battle Stance (2457): 23
+    Immolate (348): 15
+    Aspect of the Monkey (13163): 24
+```
+
+# Old statistics for Season 4 collected 2019-08-04)
 ```
 Number of times spell was available at roll #1
     Healing Wave (331): 236
